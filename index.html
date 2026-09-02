@@ -1,247 +1,673 @@
-<!-- PORTFOLIO PROJECTS SECTION -->
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <span class="text-brand-500 text-xs font-mono uppercase tracking-widest">Portfolio</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Featured Live Deployments</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esha Jawaid | Full-Stack Architect</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f17;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary-green: #22c55e;
+            --primary-hover: #16a34a;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #22c55e, #86efac);
+            color: #0b0f17;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            color: var(--primary-green);
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: #0b0f17;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 90px 5% 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-badge {
+            color: var(--primary-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 150px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .availability-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: var(--primary-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #22c55e, #86efac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding-top: 25px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .stat-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* CODE TERMINAL BOX */
+        .code-box {
+            background: rgba(18, 24, 38, 0.9);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 15px;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .code-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* GRID CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+        }
+
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .card h4, .card h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* TECH BADGES */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: #d1d5db;
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            padding-top: 12px;
+            border-top: 1px solid var(--card-border);
+            width: 100%;
+        }
+
+        /* FAQ ACCORDION */
+        details {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+        }
+
+        summary {
+            color: #ffffff;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 30px 5%;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="#" class="nav-brand">
+            <div class="logo-box">EJ</div>
+            <div>
+                <div style="font-weight: 800; font-size: 0.95rem;">ESHA JAWAID</div>
+                <div style="font-size: 0.7rem; color: var(--primary-green); font-family: 'JetBrains Mono';">Full-Stack Architect</div>
+            </div>
+        </a>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Capabilities</a>
+            <a href="#projects">Portfolio</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#faq">FAQ</a>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Project 1: MediFlow Healthcare -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
-                        <span class="text-brand-500">01</span>
-                        <span>Healthcare Tech</span>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white">MediFlow</h3>
-                    <p class="text-xs text-brand-500 font-mono mt-1">Healthcare Portal & Web App</p>
-                    <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-                        Modern medical interface engineered for patient portals, clinical workflows, and seamless digital healthcare interactions.
-                    </p>
-                    
-                    <!-- Tech Badges -->
-                    <div class="flex flex-wrap gap-1.5 mt-5">
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">HTML5</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Tailwind</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">JS Architecture</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Vercel</span>
-                    </div>
-                </div>
-                
-                <div class="mt-6 pt-3 border-t border-slate-800/80">
-                    <a href="https://medi-flow-healthcare-wine.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 2: VORTEX Digital -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
-                        <span class="text-brand-500">02</span>
-                        <span>Agency Portal</span>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white">VORTEX Digital</h3>
-                    <p class="text-xs text-brand-500 font-mono mt-1">Digital Transformation Platform</p>
-                    <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-                        Ultra-sleek agency portal engineered with interactive service matrices, glassmorphism aesthetics, and clean performance optimization.
-                    </p>
-                    
-                    <!-- Tech Badges -->
-                    <div class="flex flex-wrap gap-1.5 mt-5">
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">HTML5</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Tailwind</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">JavaScript</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Vercel</span>
-                    </div>
-                </div>
-                
-                <div class="mt-6 pt-3 border-t border-slate-800/80">
-                    <a href="https://vortex-digital-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 3: ESHA LUXEE -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
-                        <span class="text-brand-500">03</span>
-                        <span>E-Commerce</span>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white">ESHA LUXEE</h3>
-                    <p class="text-xs text-brand-500 font-mono mt-1">Luxury Storefront</p>
-                    <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-                        High-converting luxury fashion storefront with responsive product showcases, fluid UI micro-interactions, and cart workflow layout.
-                    </p>
-
-                    <!-- Tech Badges -->
-                    <div class="flex flex-wrap gap-1.5 mt-5">
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">HTML5</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Tailwind</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">JavaScript</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Vercel</span>
-                    </div>
-                </div>
-
-                <div class="mt-6 pt-3 border-t border-slate-800/80">
-                    <a href="https://esha-luxee.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 4: APEX Agency -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
-                        <span class="text-brand-500">04</span>
-                        <span>Corporate Tech</span>
-                    </div>
-                    <h3 class="text-xl font-extrabold text-white">APEX Agency</h3>
-                    <p class="text-xs text-brand-500 font-mono mt-1">Corporate Web Platform</p>
-                    <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-                        Comprehensive corporate platform designed with structured service packages, fast loading times, and intuitive responsive navigation.
-                    </p>
-
-                    <!-- Tech Badges -->
-                    <div class="flex flex-wrap gap-1.5 mt-5">
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">HTML5</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">CSS3</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">JavaScript</span>
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Responsive</span>
-                    </div>
-                </div>
-
-                <div class="mt-6 pt-3 border-t border-slate-800/80">
-                    <a href="https://apex-agency-project.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                    </a>
-                </div>
-            </div>
+        <div class="nav-actions">
+            <a href="https://github.com/eshajawaid537-jpg" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:eshajawaid537@gmail.com" class="btn-primary"><i class="fa-regular fa-paper-plane"></i> Let's Talk</a>
         </div>
-    </section>
-    <!-- DEVELOPMENT WORKFLOW SECTION -->
-    <section id="workflow" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <span class="text-brand-500 text-xs font-mono uppercase tracking-widest">Development Standards</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">How I Deliver Quality Projects</h2>
-        </div>
+    </nav>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 rounded-2xl relative">
-                <div class="text-4xl font-extrabold text-brand-500/20 font-mono absolute top-6 right-6">01</div>
-                <h3 class="text-xl font-bold text-white mb-3">Discovery & Planning</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Analyzing requirements, defining user flows, and planning high-performing full-stack architecture before writing code.
-                </p>
-            </div>
-
-            <div class="glass-card p-8 rounded-2xl relative">
-                <div class="text-4xl font-extrabold text-brand-500/20 font-mono absolute top-6 right-6">02</div>
-                <h3 class="text-xl font-bold text-white mb-3">Modern Development</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Building clean, modular, and responsive interfaces with HTML, Tailwind CSS, JavaScript, React, and Node.js logic.
-                </p>
-            </div>
-
-            <div class="glass-card p-8 rounded-2xl relative">
-                <div class="text-4xl font-extrabold text-brand-500/20 font-mono absolute top-6 right-6">03</div>
-                <h3 class="text-xl font-bold text-white mb-3">Optimization & Launch</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Executing cross-browser testing, mobile optimization, SEO structure checks, and fast deployments via Vercel.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-            <span class="text-brand-500 text-xs font-mono uppercase tracking-widest">Questions & Answers</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Frequently Asked Questions</h2>
-        </div>
-
-        <div class="space-y-4">
-            <details class="glass-card rounded-2xl p-6 group [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex items-center justify-between cursor-pointer text-white font-bold text-base">
-                    What technologies do you use for full-stack web development?
-                    <span class="text-brand-500 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="text-slate-400 text-sm mt-4 leading-relaxed border-t border-slate-800/80 pt-4">
-                    I specialize in HTML5, Tailwind CSS, modern JavaScript (ES6+), React, Node.js, Express, C++, and SEO optimization to build fast, scalable applications.
-                </p>
-            </details>
-
-            <details class="glass-card rounded-2xl p-6 group [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex items-center justify-between cursor-pointer text-white font-bold text-base">
-                    How long does it take to complete a project?
-                    <span class="text-brand-500 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="text-slate-400 text-sm mt-4 leading-relaxed border-t border-slate-800/80 pt-4">
-                    Turnaround time depends on project scope. Landing pages take 3-5 days, while full web applications take 1-2 weeks.
-                </p>
-            </details>
-
-            <details class="glass-card rounded-2xl p-6 group [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex items-center justify-between cursor-pointer text-white font-bold text-base">
-                    Will the website be fully mobile responsive?
-                    <span class="text-brand-500 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
-                </summary>
-                <p class="text-slate-400 text-sm mt-4 leading-relaxed border-t border-slate-800/80 pt-4">
-                    Yes, 100%! All web apps are built with a Mobile-First approach ensuring pixel-perfect display across phones, tablets, and laptops.
-                </p>
-            </details>
-        </div>
-    </section>
-
-    <!-- EDUCATION & CREDENTIALS -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <span class="text-brand-500 text-xs font-mono uppercase tracking-widest">Background</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Education & Credentials</h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass-card p-8 rounded-2xl">
-                <span class="text-xs font-mono text-brand-500">Undergraduate Degree</span>
-                <h3 class="text-2xl font-extrabold text-white mt-1">BS Computer Science</h3>
-                <p class="text-slate-400 text-sm mt-1">The Women University Multan</p>
-                <div class="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-500/10 text-brand-500 text-xs font-mono font-bold">
-                    <i class="fa-solid fa-graduation-cap"></i> Cumulative GPA: 3.46 / 4.00
-                </div>
-            </div>
-
-            <div class="glass-card p-8 rounded-2xl">
-                <span class="text-xs font-mono text-brand-500">Professional Certifications</span>
-                <h3 class="text-2xl font-extrabold text-white mt-1">DigiSkills Training Program</h3>
-                <p class="text-slate-400 text-sm mt-1">Ministry of IT & Telecom Pakistan</p>
-                <div class="mt-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-500/10 text-brand-500 text-xs font-mono font-bold">
-                    <i class="fa-solid fa-certificate"></i> Certified: SEO & Digital Freelancing
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-800/80 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+    <!-- HERO SECTION -->
+    <section id="about" class="hero">
         <div>
-            <p class="font-bold text-white text-base">ESHA JAWAID</p>
-            <p class="text-xs text-slate-400 mt-0.5">Full-Stack Architect & Web Developer</p>
+            <div class="availability-tag">
+                <span class="dot"></span> AVAILABLE FOR FREELANCE & CLIENT PROJECTS
+            </div>
+
+            <h1>Building High-Impact <span class="highlight">Modern Web Applications</span> & UI Systems</h1>
+
+            <p>Full-Stack Web Developer & Computer Science Scholar (3.46 CGPA). Crafting high-converting storefronts, corporate portals, scalable backends, and responsive web platforms.</p>
+
+            <div class="hero-cta">
+                <a href="#projects" class="btn-primary"><i class="fa-solid fa-rocket"></i> View Live Deployments</a>
+                <a href="mailto:eshajawaid537@gmail.com" class="btn-secondary"><i class="fa-solid fa-file-arrow-down" style="color: var(--primary-green);"></i> Contact / Resume</a>
+            </div>
+
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-num">3.46</div>
+                    <div class="stat-desc">Academic CGPA</div>
+                </div>
+                <div>
+                    <div class="stat-num">100%</div>
+                    <div class="stat-desc">Mobile & Speed Opt.</div>
+                </div>
+                <div>
+                    <div class="stat-num">Full-Stack</div>
+                    <div class="stat-desc">Node, React & SQL</div>
+                </div>
+                <div>
+                    <div class="stat-num">Certified</div>
+                    <div class="stat-desc">SEO & Freelancing</div>
+                </div>
+            </div>
         </div>
 
-        <div class="flex items-center gap-4">
-            <a href="https://github.com/eshajawaid537-jpg" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-brand-500 transition-colors text-lg" title="GitHub Profile">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-brand-500 transition-colors text-lg" title="LinkedIn Profile">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="mailto:eshajawaid537@gmail.com" class="text-slate-400 hover:text-brand-500 transition-colors text-lg" title="Email Me">
-                <i class="fa-regular fa-envelope"></i>
-            </a>
+        <div class="code-box">
+            <div class="code-header">
+                <div class="code-dots">
+                    <span style="background: #ef4444;"></span>
+                    <span style="background: #f59e0b;"></span>
+                    <span style="background: #10b981;"></span>
+                </div>
+                <span style="color: #6b7280; font-size: 0.75rem;">developer-profile.js</span>
+            </div>
+            <pre style="color: #e5e7eb; leading-height: 1.6;"><span style="color: #c084fc;">const</span> <span style="color: #4ade80;">developer</span> = {
+  name: <span style="color: #fde047;">'Esha Jawaid'</span>,
+  role: <span style="color: #fde047;">'Full-Stack Architect'</span>,
+  education: <span style="color: #fde047;">'BS CS (Women Univ)'</span>,
+  cgpa: <span style="color: #60a5fa;">3.46</span>,
+  skills: [
+    <span style="color: #fde047;">'React'</span>, <span style="color: #fde047;">'Tailwind'</span>,
+    <span style="color: #fde047;">'Node.js'</span>, <span style="color: #fde047;">'Express'</span>,
+    <span style="color: #fde047;">'MongoDB'</span>, <span style="color: #fde047;">'C++'</span>
+  ],
+  status: <span style="color: #4ade80;">'Available for Hire'</span>
+};</pre>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <span class="section-badge">Tech Architecture</span>
+        <h2 class="section-title">Technical Stack & Core Capabilities</h2>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fa-brands fa-react"></i></div>
+                <h4>Frontend Engineering</h4>
+                <p>HTML5, CSS3, Tailwind CSS, JavaScript (ES6+), React. Clean semantic components & responsive design.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+                <h4>Backend & APIs</h4>
+                <p>Node.js, Express framework, RESTful APIs, routing architecture, and backend service integration.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                <h4>C++ Engine & Logic</h4>
+                <p>Object-Oriented Programming, data structures, algorithms, and logical problem solving.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
+                <h4>Cloud & Deployment</h4>
+                <p>Vercel cloud hosting, Git version control, continuous integration, and performance optimization.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+                <h4>Database Systems</h4>
+                <p>MongoDB, MySQL database modeling, query handling, and secure data storage schemas.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h4>SEO & Marketing</h4>
+                <p>DigiSkills Certified Practitioner. On-page SEO, speed audits, and digital freelancing execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <span class="section-badge">Portfolio</span>
+        <h2 class="section-title">Featured Live Deployments</h2>
+
+        <div class="cards-grid">
+            <!-- Project 1: MediFlow -->
+            <div class="card">
+                <div>
+                    <span style="color: var(--primary-green); font-family: 'JetBrains Mono'; font-size: 0.75rem;">01 • Healthcare Portal</span>
+                    <h3 style="margin-top: 5px;">MediFlow Healthcare</h3>
+                    <p>Modern clinical interface for healthcare management, patient portals, and digital medical workflows.</p>
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Tailwind</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+                <a href="https://medi-flow-healthcare-wine.vercel.app/" target="_blank" class="project-link">
+                    Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- Project 2: Vortex -->
+            <div class="card">
+                <div>
+                    <span style="color: var(--primary-green); font-family: 'JetBrains Mono'; font-size: 0.75rem;">02 • Agency Platform</span>
+                    <h3 style="margin-top: 5px;">VORTEX Digital</h3>
+                    <p>Ultra-sleek digital agency web application with glassmorphism UI and service matrices.</p>
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Tailwind</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+                <a href="https://vortex-digital-alpha.vercel.app/" target="_blank" class="project-link">
+                    Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span style="color: var(--primary-green); font-family: 'JetBrains Mono'; font-size: 0.75rem;">03 • E-Commerce</span>
+                    <h3 style="margin-top: 5px;">ESHA LUXEE</h3>
+                    <p>High-converting luxury fashion storefront featuring responsive showcases and fluid UI interactions.</p>
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Tailwind</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+                <a href="https://esha-luxee.vercel.app/" target="_blank" class="project-link">
+                    Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <span style="color: var(--primary-green); font-family: 'JetBrains Mono'; font-size: 0.75rem;">04 • Corporate Tech</span>
+                    <h3 style="margin-top: 5px;">APEX Agency</h3>
+                    <p>Corporate platform engineered with structured package displays and mobile optimization.</p>
+                    <div class="tech-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Vercel</span>
+                    </div>
+                </div>
+                <a href="https://apex-agency-project.vercel.app/" target="_blank" class="project-link">
+                    Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <span class="section-badge">Questions & Answers</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <details>
+            <summary>What technologies do you use for full-stack web development? <i class="fa-solid fa-chevron-down" style="color: var(--primary-green); font-size: 0.8rem;"></i></summary>
+            <p>I specialize in HTML5, Tailwind CSS, JavaScript (ES6+), React, Node.js, Express, C++, databases (MongoDB/SQL), and SEO optimization.</p>
+        </details>
+        <details>
+            <summary>How long does it take to complete a project? <i class="fa-solid fa-chevron-down" style="color: var(--primary-green); font-size: 0.8rem;"></i></summary>
+            <p>Standard landing pages take 3-5 days, while full web applications take 1-2 weeks depending on features.</p>
+        </details>
+        <details>
+            <summary>Will the website be fully mobile responsive? <i class="fa-solid fa-chevron-down" style="color: var(--primary-green); font-size: 0.8rem;"></i></summary>
+            <p>Yes, 100%! Every project is built Mobile-First to look pixel-perfect across phones, tablets, and desktops.</p>
+        </details>
+    </section>
+
+    <footer>
+        <div>
+            <div style="font-weight: 800; font-size: 1rem; color: #fff;">ESHA JAWAID</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Full-Stack Architect & Web Developer</div>
+        </div>
+
+        <div style="display: flex; gap: 15px;">
+            <a href="https://github.com/eshajawaid537-jpg" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:eshajawaid537@gmail.com" class="social-btn"><i class="fa-regular fa-envelope"></i></a>
         </div>
     </footer>
 
