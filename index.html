@@ -3,202 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esha Jawaid | Full Stack Developer & Computer Scientist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Esha Jawaid | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --secondary: #818cf8;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --badge-bg: rgba(56, 189, 248, 0.12);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-color: #38bdf8;
-            --text-color: #f8fafc;
-            --text-secondary: #94a3b8;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
+        /* Navigation */
         header {
-            padding: 2rem 5%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.25rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(15, 23, 42, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
         }
 
         nav a {
-            color: var(--text-color);
+            color: var(--text-muted);
             text-decoration: none;
-            margin-left: 1.5rem;
-            transition: color 0.3s;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--accent-color);
+            color: var(--primary);
         }
 
+        /* Hero Section */
         .hero {
-            min-height: 70vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 1rem;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-badge {
+            background: var(--badge-bg);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            color: var(--accent-color);
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
         }
 
+        /* Section Layout */
         .section {
-            padding: 4rem 5%;
+            padding: 5rem 8%;
         }
 
         .section-title {
             font-size: 2rem;
-            margin-bottom: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
             text-align: center;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-            margin: 0.5rem auto 0;
+        .section-title span {
+            color: var(--primary);
         }
 
-        /* Skills Grid */
+        /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-card {
             background: var(--card-bg);
-            padding: 1.2rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            font-weight: 600;
+            border: 1px solid var(--card-border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
-        /* Projects Grid */
+        .skill-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .skill-card i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects Section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
         .project-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .project-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
             transform: translateY(-5px);
         }
 
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
         .project-badge {
-            align-self: flex-start;
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-color);
+            background: var(--badge-bg);
+            color: var(--primary);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.75rem;
             font-weight: 600;
+            text-transform: uppercase;
         }
 
         .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
         }
 
         .project-desc {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .tag {
-            background: #334155;
-            color: #e2e8f0;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #d1d5db;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .btn-live {
-            display: inline-block;
-            text-align: center;
-            background: var(--accent-color);
-            color: var(--bg-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: var(--primary);
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: opacity 0.3s;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
         }
 
         .btn-live:hover {
-            opacity: 0.9;
+            background: var(--primary-hover);
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
-            color: var(--text-secondary);
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            header { padding: 1rem 5%; }
+            .section { padding: 4rem 5%; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Esha Jawaid</div>
+        <a href="#" class="logo">Esha<span>.</span></a>
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -207,56 +286,80 @@
     </header>
 
     <section class="hero" id="about">
-        <h1>Hi, I'm Esha Jawaid</h1>
-        <p>Full Stack Developer & Computer Science Student</p>
+        <span class="hero-badge">Full Stack Web Developer</span>
+        <h1>Esha Jawaid</h1>
+        <p>Computer Science student building modern, scalable, and responsive web applications with full-stack technologies.</p>
     </section>
 
-    <!-- Full Stack Skills Section -->
+    <!-- Professional Full Stack Skills Section -->
     <section class="section" id="skills">
-        <h2 class="section-title">Skills & Expertise</h2>
+        <h2 class="section-title">Technical <span>Skills</span></h2>
         <div class="skills-grid">
-            <div class="skill-card">HTML5 & CSS3</div>
-            <div class="skill-card">JavaScript (ES6+)</div>
-            <div class="skill-card">Node.js</div>
-            <div class="skill-card">Express.js</div>
-            <div class="skill-card">REST APIs</div>
-            <div class="skill-card">C++</div>
-            <div class="skill-card">Git & GitHub</div>
-            <div class="skill-card">Responsive Design</div>
+            <div class="skill-card">
+                <i class="fa-brands fa-html5"></i>
+                <h3>Frontend Development</h3>
+                <p>HTML5, CSS3, JavaScript (ES6+), Responsive UI/UX Design, DOM Manipulation</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-server"></i>
+                <h3>Backend & Logic</h3>
+                <p>Node.js, Express Framework, RESTful API Development, Server Architecture</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>State & Data</h3>
+                <p>Local state management, Dynamic Data Filtering, Cart State Sync, JSON APIs</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Core Computer Science</h3>
+                <p>C++ Programming, Data Structures, Problem Solving, Computer Vision basics</p>
+            </div>
+            <div class="skill-card">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>Tools & Workflow</h3>
+                <p>Git, GitHub, VS Code, Vercel Deployment, Canva UI Designing</p>
+            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section class="section" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title">Featured <span>Projects</span></h2>
         <div class="projects-grid">
 
             <!-- Food Delivery Full Stack Project -->
             <div class="project-card">
                 <div>
-                    <span class="project-badge">Full Stack</span>
+                    <div class="project-header">
+                        <span class="project-badge">Full Stack Project</span>
+                    </div>
                     <h3 class="project-title">Food Delivery Web Application</h3>
                     <p class="project-desc">
-                        An interactive web application featuring menu filtering, dynamic cart management, seamless checkout workflow, and responsive layout across devices.
+                        A full-stack food ordering platform built with interactive menu filtering, dynamic cart state management, seamless order calculations, and a fully responsive layout.
                     </p>
                     <div class="tech-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML5 / CSS3</span>
+                        <span class="tag">JavaScript (ES6+)</span>
                         <span class="tag">Node.js</span>
                         <span class="tag">REST API</span>
+                        <span class="tag">Responsive UI</span>
                     </div>
                 </div>
-                <a href="https://food-delivery-app-3oon.vercel.app/" target="_blank" class="btn-live">Live Demo</a>
+                <a href="https://food-delivery-app-3oon.vercel.app/" target="_blank" class="btn-live">
+                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
             </div>
 
-            <!-- Facial Expression Recognition Project -->
+            <!-- Emotion Recognition Project -->
             <div class="project-card">
                 <div>
-                    <span class="project-badge">Computer Vision</span>
+                    <div class="project-header">
+                        <span class="project-badge">Computer Vision</span>
+                    </div>
                     <h3 class="project-title">Facial Expression Recognition</h3>
                     <p class="project-desc">
-                        An AI-based computer vision application designed for real-time face detection and facial emotion analysis.
+                        An AI computer vision system designed for real-time face detection and facial expression recognition using machine learning models.
                     </p>
                     <div class="tech-tags">
                         <span class="tag">Python</span>
