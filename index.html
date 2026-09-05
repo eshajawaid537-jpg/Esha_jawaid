@@ -3,339 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esha Jawaid | Full-Stack Web Developer & Computer Science Scholar</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <title>Esha Jawaid - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #030712;
+            background-color: #090d16;
             color: #f3f4f6;
             overflow-x: hidden;
         }
         .heading-font {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Syne', sans-serif;
         }
         .glass-card {
-            background: rgba(17, 24, 39, 0.65);
+            background: rgba(15, 23, 42, 0.65);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .glass-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 15px 35px -10px rgba(59, 130, 246, 0.3);
-            transform: translateY(-6px) scale(1.01);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #c084fc 50%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
         .gradient-btn {
-            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .gradient-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s ease;
-        }
-        .gradient-btn:hover::before {
-            opacity: 1;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .gradient-btn:hover {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
         }
-
-        /* ADVANCED ANIMATIONS & SCROLL REVEAL */
+        /* Custom Smooth Scroll Reveal Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(35px) scale(0.98);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
-        @keyframes float {
+        /* Glowing keyframe animations */
+        @keyframes floatGlow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(1deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
         }
+        .animate-float {
+            animation: floatGlow 6s ease-in-out infinite;
+        }
+
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.25; transform: scale(1); }
-            50% { opacity: 0.45; transform: scale(1.1); }
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.08); }
         }
-        @keyframes borderBeam {
-            0% { border-color: rgba(59, 130, 246, 0.2); }
-            50% { border-color: rgba(168, 85, 247, 0.6); }
-            100% { border-color: rgba(59, 130, 246, 0.2); }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
         }
 
-        .animate-float { animation: float 5s ease-in-out infinite; }
-        .animate-glow { animation: pulseGlow 8s ease-in-out infinite; }
-        .animate-border { animation: borderBeam 4s infinite; }
-
-        /* TYPING EFFECT CURSOR */
-        .typing-cursor::after {
-            content: '|';
-            animation: blink 1s infinite;
+        /* Custom Scrollbar for Modal */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 4px;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white relative">
+<body class="relative">
 
-    <!-- BACKGROUND AMBIENT LIGHTS -->
-    <div class="fixed top-[-15%] left-[-10%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[140px] pointer-events-none animate-glow"></div>
-    <div class="fixed bottom-[-15%] right-[-10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none animate-glow" style="animation-delay: 3s;"></div>
+    <!-- Background Animated Ambient Light Glows -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
+    <div class="fixed bottom-10 right-10 w-96 h-96 bg-purple-600/20 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" style="animation-delay: 2s;"></div>
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-gray-800/50">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20 group-hover:rotate-12 transition-transform">
+    <!-- NAVBAR HEADER -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#090d16]/80 border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            
+            <!-- Logo / Name -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20 text-sm">
                     EJ
                 </div>
                 <div>
-                    <span class="block font-bold text-lg tracking-tight heading-font">ESHA JAWAID</span>
-                    <span class="block text-xs text-blue-400 font-medium">Full-Stack Web Developer</span>
+                    <h1 class="font-extrabold text-sm sm:text-base leading-tight tracking-wide heading-font">ESHA JAWAID</h1>
+                    <p class="text-[11px] text-blue-400 font-medium">Full-Stack Web Developer</p>
                 </div>
-            </a>
-
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
-                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
-                <a href="#education" class="hover:text-blue-400 transition-colors">Education & Certifications</a>
-                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
             </div>
 
-            <div class="flex items-center gap-3">
-                <button onclick="openResumeModal()" class="glass-card px-4 py-2.5 rounded-xl font-medium text-sm text-gray-200 hover:text-white flex items-center gap-2 border border-blue-500/30">
-                    <i class="fa-solid fa-file-pdf text-blue-400"></i> Resume
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="openResumeModal()" class="glass-card hover:bg-slate-800/80 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 text-gray-200 border border-blue-500/30 transition-all">
+                    <i class="fa-solid fa-file-pdf text-red-400"></i>
+                    <span>Resume</span>
                 </button>
-                <a href="mailto:eshajawaid537@gmail.com" class="gradient-btn px-5 py-2.5 rounded-xl font-medium text-sm text-white shadow-lg shadow-blue-500/20 flex items-center gap-2">
-                    <i class="fa-regular fa-envelope"></i> Contact
+                <a href="#contact" class="gradient-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white shadow-md flex items-center gap-2">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    <span>Contact</span>
                 </a>
             </div>
+
         </div>
-    </nav>
+    </header>
 
     <!-- HERO SECTION -->
-    <section class="pt-36 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center relative">
-        <div class="reveal active">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs font-semibold text-blue-400 mb-8 w-fit border border-blue-500/30 shadow-lg">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+    <section class="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 py-12 relative">
+        <div class="max-w-4xl mx-auto text-center reveal active">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6 animate-float">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 AVAILABLE FOR FREELANCE & WEB DEV ROLES
             </div>
-        </div>
 
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight heading-font leading-tight mb-6 reveal active">
-            Building High-Performance <br class="hidden sm:inline" />
-            <span class="gradient-text" id="typewriter"></span><span class="typing-cursor text-blue-400"></span>
-        </h1>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold heading-font tracking-tight mb-6 leading-tight">
+                Building High-Performance <br class="hidden sm:inline" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400" id="typewriter"></span>
+            </h1>
 
-        <p class="text-gray-300 text-lg md:text-xl max-w-3xl mb-10 font-normal leading-relaxed reveal active">
-            Driven Computer Science undergraduate (3.46 CGPA, 5th Semester) and Full-Stack Web Developer proficient in modern frontend technologies, UI/UX optimization, and SEO-driven digital solutions.
-        </p>
+            <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+                Driven Computer Science undergraduate (3.46 CGPA, 5th Semester) and Full-Stack Web Developer proficient in modern frontend technologies, UI/UX optimization, and SEO-driven digital solutions.
+            </p>
 
-        <div class="flex flex-wrap gap-4 mb-16 reveal active">
-            <a href="#projects" class="gradient-btn px-8 py-4 rounded-xl font-semibold text-white shadow-xl shadow-blue-500/20 flex items-center gap-3">
-                <i class="fa-solid fa-rocket animate-float"></i> View Featured Live Deployments
-            </a>
-            <button onclick="openResumeModal()" class="glass-card px-8 py-4 rounded-xl font-semibold text-gray-200 hover:text-white flex items-center gap-3 border border-purple-500/30 hover:border-purple-500/60 transition-all">
-                <i class="fa-solid fa-file-pdf text-purple-400"></i> Open Resume Modal
-            </button>
-        </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto gradient-btn px-7 py-3.5 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> View Featured Live Deployments
+                </a>
+                <button onclick="openResumeModal()" class="w-full sm:w-auto glass-card px-7 py-3.5 rounded-xl text-sm font-semibold text-gray-200 hover:text-white flex items-center justify-center gap-2 border border-purple-500/30 hover:border-purple-500/60 transition-all">
+                    <i class="fa-solid fa-file-pdf text-purple-400"></i> Open Resume PDF
+                </button>
+            </div>
 
-        <!-- STATS GRID -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-gray-800/80 reveal">
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-blue-400 heading-font mb-1">3.46</div>
-                <div class="text-xs text-gray-400 font-medium">BS Computer Science CGPA</div>
-            </div>
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-purple-400 heading-font mb-1">5th Sem</div>
-                <div class="text-xs text-gray-400 font-medium">The Women University Multan</div>
-            </div>
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-indigo-400 heading-font mb-1">5 Live</div>
-                <div class="text-xs text-gray-400 font-medium">Featured Web Apps</div>
-            </div>
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-pink-400 heading-font mb-1">DigiSkills</div>
-                <div class="text-xs text-gray-400 font-medium">SEO & Marketing Certified</div>
-            </div>
         </div>
     </section>
 
-    <!-- TECHNICAL SKILLS -->
-    <section id="skills" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="mb-12 reveal">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Expertise</span>
-            <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Technical Skills & Tools</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="glass-card p-6 rounded-2xl flex flex-col justify-between group reveal">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 class="font-bold text-lg heading-font mb-2">Frontend Development</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        HTML5, CSS3, JavaScript (ES6+), React.js, Tailwind CSS, Responsive Web Design
-                    </p>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl flex flex-col justify-between group reveal">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-terminal"></i>
-                    </div>
-                    <h3 class="font-bold text-lg heading-font mb-2">Programming Languages</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        C++ (Object-Oriented Programming & Data Structures), JavaScript
-                    </p>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl flex flex-col justify-between group reveal">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-wrench"></i>
-                    </div>
-                    <h3 class="font-bold text-lg heading-font mb-2">Tools & Deployment</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        VS Code, Git, GitHub, Vercel Cloud Deployment, Canva (UI/UX)
-                    </p>
-                </div>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl flex flex-col justify-between group reveal">
-                <div>
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3 class="font-bold text-lg heading-font mb-2">Digital Expertise</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Search Engine Optimization (SEO), Digital Marketing, Content Strategy, Freelancing
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED LIVE DEPLOYMENTS -->
+    <!-- PROJECTS SECTION -->
     <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="mb-12 reveal">
             <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Portfolio</span>
             <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Featured Live Deployments</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- PROJECT 1 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group reveal">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-emerald-400 heading-font">01</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Healthcare Platform</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">MediFlow Healthcare Portal</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Tech Stack: HTML5, CSS3, JavaScript, Vercel</p>
-                    <ul class="text-sm text-gray-300 space-y-2 mb-6 list-disc list-inside">
-                        <li>Engineered a fully responsive healthcare platform focused on patient service flows and dynamic appointment layouts.</li>
-                        <li>Achieved 95+ performance optimization and ensured seamless cross-device mobile responsiveness.</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="https://esha-jawaid-ne6d.vercel.app" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
-                        Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- PROJECT 2 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group reveal">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-amber-400 heading-font">02</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">Food Delivery</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">Food Delivery App</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Tech Stack: HTML5, CSS3, JavaScript, Vercel</p>
-                    <ul class="text-sm text-gray-300 space-y-2 mb-6 list-disc list-inside">
-                        <li>Interactive food ordering platform featuring dynamic menu browsing and mobile-first responsive layout.</li>
-                        <li>Fast user navigation and seamless interaction across all mobile viewports.</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="https://food-delivery-app-3oon.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
-                        Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- PROJECT 3 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group reveal">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-blue-400 heading-font">03</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">Agency Platform</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">VORTEX Digital</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Tech Stack: HTML5, CSS3, JavaScript, Vercel</p>
-                    <ul class="text-sm text-gray-300 space-y-2 mb-6 list-disc list-inside">
-                        <li>Built a modern agency platform with glassmorphism UI elements and interactive service matrices.</li>
-                        <li>Designed with fluid animations and performance-optimized code structure.</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="https://vortex-digital-alpha.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
-                        Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- PROJECT 4 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group reveal">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-purple-400 heading-font">04</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">E-Commerce</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">ESHA LUXEE</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Tech Stack: HTML5, CSS3, JavaScript, Vercel</p>
-                    <ul class="text-sm text-gray-300 space-y-2 mb-6 list-disc list-inside">
-                        <li>Designed a high-converting luxury fashion storefront with micro-interactions.</li>
-                        <li>Built mobile-first shopping interfaces for seamless cart and product browsing experience.</li>
-                    </ul>
-                </div>
-                <div>
-                    <a href="https://esha-luxee.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
-                        Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- PROJECT 5 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- PROJECT CARD EXAMPLE -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group reveal hover:border-blue-500/40 transition-all">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-bold text-indigo-400 heading-font">05</span>
@@ -357,7 +175,7 @@
         </div>
     </section>
 
-    <!-- EDUCATION & CERTIFICATIONS -->
+    <!-- EDUCATION SECTION -->
     <section id="education" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="mb-12 reveal">
             <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Academic Background</span>
@@ -383,11 +201,10 @@
                 </div>
             </div>
 
-            <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+            <!-- ACHIEVEMENTS -->
             <div class="glass-card p-8 rounded-2xl reveal">
                 <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">Achievements</span>
                 <h3 class="text-2xl font-bold heading-font mt-2 mb-6">Certifications & Experience</h3>
-                
                 <ul class="space-y-4 text-sm text-gray-300">
                     <li class="flex items-start gap-3">
                         <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
@@ -410,33 +227,24 @@
                             <p class="text-xs text-gray-400">Alkhidmat Foundation Pakistan (Digital Coordination & Project Support)</p>
                         </div>
                     </li>
-                    <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                        <div>
-                            <strong class="text-white">International Conference Certificate</strong>
-                            <p class="text-xs text-gray-400">Awarded by University for academic & tech participation</p>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT / CTA -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="py-20 px-6 max-w-4xl mx-auto text-center">
-        <div class="glass-card p-10 md:p-16 rounded-3xl border border-blue-500/20 relative overflow-hidden animate-border reveal">
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="glass-card p-10 md:p-16 rounded-3xl border border-blue-500/20 relative overflow-hidden reveal">
             <h2 class="text-3xl md:text-5xl font-extrabold heading-font mb-4">Let's Work Together</h2>
             <p class="text-gray-300 max-w-xl mx-auto text-base mb-8">
                 Multan, Pakistan • eshajawaid537@gmail.com
             </p>
-
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="mailto:eshajawaid537@gmail.com" class="gradient-btn px-8 py-4 rounded-xl font-bold text-white shadow-xl shadow-blue-500/25 flex items-center gap-3">
                     <i class="fa-regular fa-paper-plane"></i> Send Email
                 </a>
                 <button onclick="openResumeModal()" class="glass-card px-8 py-4 rounded-xl font-bold text-gray-200 hover:text-white flex items-center gap-3 border border-blue-500/30">
-                    <i class="fa-solid fa-file-pdf text-blue-400"></i> View Resume Details
+                    <i class="fa-solid fa-file-pdf text-red-400"></i> View PDF Resume
                 </button>
             </div>
         </div>
@@ -446,72 +254,65 @@
     <footer class="py-10 px-6 border-t border-gray-800/80 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
         <p>© Esha Jawaid. All Rights Reserved.</p>
         <div class="flex items-center gap-6">
-            <button onclick="openResumeModal()" class="hover:text-blue-400 transition-colors">Resume</button>
+            <button onclick="openResumeModal()" class="hover:text-blue-400 transition-colors">Resume PDF</button>
             <a href="mailto:eshajawaid537@gmail.com" class="hover:text-blue-400 transition-colors">Email</a>
         </div>
     </footer>
 
-    <!-- RESUME MODAL POPUP -->
-    <div id="resumeModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl relative border border-blue-500/30">
-            <button onclick="closeResumeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <!-- RESUME MODAL POPUP (PDF VIEW + DOWNLOAD BUTTON) -->
+    <div id="resumeModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6">
+        <div class="glass-card max-w-4xl w-full h-[90vh] p-4 sm:p-6 rounded-3xl relative border border-blue-500/30 flex flex-col justify-between shadow-2xl">
             
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-12 h-12 rounded-xl gradient-btn flex items-center justify-center text-white text-xl">
-                    <i class="fa-solid fa-id-card"></i>
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-gray-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center text-white text-lg">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold heading-font text-white leading-none">Esha_Jawaid_Resume.pdf</h3>
+                        <p class="text-xs text-blue-400 mt-1">Full-Stack Web Developer Resume</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-bold heading-font">ESHA JAWAID</h3>
-                    <p class="text-xs text-blue-400">Full-Stack Web Developer & CS Scholar (Multan, Pakistan)</p>
-                </div>
-            </div>
-
-            <div class="space-y-4 text-sm text-gray-300 max-h-[60vh] overflow-y-auto pr-2">
-                <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
-                    <h4 class="font-bold text-white mb-1"><i class="fa-solid fa-user text-blue-400 mr-2"></i> Professional Summary</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        Driven Computer Science undergraduate (3.46 CGPA, 5th Semester) and Full-Stack Web Developer with expertise in building high-performance, responsive web applications and dynamic user interfaces. Proficient in modern frontend technologies, UI/UX optimization, and SEO-driven digital solutions. Certified in Digital Marketing and Freelancing by DigiSkills.
-                    </p>
-                </div>
-
-                <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
-                    <h4 class="font-bold text-white mb-1"><i class="fa-solid fa-graduation-cap text-purple-400 mr-2"></i> Education & Coursework</h4>
-                    <p class="text-xs text-gray-300 font-semibold">BS Computer Science — The Women University Multan (2024 - Present, 5th Sem)</p>
-                    <p class="text-xs text-gray-400">Cumulative GPA: 3.46 / 4.00</p>
-                    <p class="text-xs text-gray-400 mt-1">Core: Data Structures & Algorithms, OOP (C++), Web Engineering, DBMS, Software Engineering</p>
-                </div>
-
-                <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
-                    <h4 class="font-bold text-white mb-1"><i class="fa-solid fa-code text-pink-400 mr-2"></i> Technical Skills</h4>
-                    <p class="text-xs text-gray-400"><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), React.js, Tailwind CSS</p>
-                    <p class="text-xs text-gray-400"><strong>Languages:</strong> C++ (OOP & Data Structures), JavaScript</p>
-                    <p class="text-xs text-gray-400"><strong>Tools:</strong> VS Code, Git, GitHub, Vercel Cloud Deployment, Canva (UI/UX)</p>
-                    <p class="text-xs text-gray-400"><strong>Digital:</strong> SEO, Digital Marketing, Content Strategy, Freelancing</p>
-                </div>
-
-                <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
-                    <h4 class="font-bold text-white mb-1"><i class="fa-solid fa-certificate text-emerald-400 mr-2"></i> Certifications & Achievements</h4>
-                    <p class="text-xs text-gray-400">• SEO & Digital Marketing Certification (DigiSkills / Ignite)</p>
-                    <p class="text-xs text-gray-400">• Freelancing Certification (DigiSkills)</p>
-                    <p class="text-xs text-gray-400">• Summer Internship Program (Alkhidmat Foundation Pakistan)</p>
-                    <p class="text-xs text-gray-400">• International Conference Certificate</p>
+                
+                <div class="flex items-center gap-2">
+                    <!-- Download Button -->
+                    <a href="resume.pdf" download="Esha_Jawaid_Resume.pdf" class="gradient-btn px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-2 shadow-md">
+                        <i class="fa-solid fa-download"></i> Download PDF
+                    </a>
+                    <!-- Close Button -->
+                    <button onclick="closeResumeModal()" class="w-9 h-9 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white flex items-center justify-center text-lg transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                 </div>
             </div>
 
-            <div class="mt-6 flex justify-end gap-3">
-                <button onclick="closeResumeModal()" class="px-5 py-2.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white">
-                    Close
+            <!-- PDF Viewer Body -->
+            <div class="flex-1 my-4 bg-gray-950 rounded-2xl overflow-hidden border border-gray-800 relative">
+                <!-- PDF Object Embed -->
+                <object data="resume.pdf" type="application/pdf" class="w-full h-full">
+                    <div class="flex flex-col items-center justify-center h-full p-6 text-center">
+                        <i class="fa-solid fa-file-pdf text-5xl text-red-500 mb-4"></i>
+                        <p class="text-sm text-gray-300 mb-4">Your browser doesn't support direct inline PDF viewing.</p>
+                        <a href="resume.pdf" download="Esha_Jawaid_Resume.pdf" class="gradient-btn px-6 py-3 rounded-xl text-xs font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Click Here to Download PDF
+                        </a>
+                    </div>
+                </object>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="pt-3 border-t border-gray-800 flex justify-between items-center text-xs text-gray-400">
+                <span>Esha Jawaid • CS Scholar</span>
+                <button onclick="closeResumeModal()" class="hover:text-white text-xs font-semibold">
+                    Close Window
                 </button>
-                <a href="mailto:eshajawaid537@gmail.com?subject=Inquiry%20regarding%20Portfolio" class="gradient-btn px-6 py-2.5 rounded-xl text-xs font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i> Contact via Email
-                </a>
             </div>
+
         </div>
     </div>
 
-    <!-- INTERACTIVE JAVASCRIPT ANIMATIONS -->
+    <!-- JAVASCRIPT ANIMATIONS & MODAL LOGIC -->
     <script>
         // 1. TYPEWRITER ANIMATION
         const words = ["Web Applications", "Dynamic User Interfaces", "SEO-Driven Solutions", "E-Commerce Platforms"];
@@ -548,7 +349,7 @@
         }
         typingEffect();
 
-        // 2. SCROLL REVEAL ANIMATION (Intersection Observer)
+        // 2. SCROLL REVEAL ANIMATION
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -564,12 +365,14 @@
             const modal = document.getElementById('resumeModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeResumeModal() {
             const modal = document.getElementById('resumeModal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
