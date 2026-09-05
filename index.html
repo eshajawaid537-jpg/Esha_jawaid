@@ -1,358 +1,394 @@
-<!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esha Jawaid - Full-Stack Web Developer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
-        .heading-font { font-family: 'Space Grotesk', sans-serif; }
-        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .gradient-btn { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
-        .gradient-btn:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); }
-        .whatsapp-gradient { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-    </style>
-</head>
-<body class="bg-[#0b0f19] text-gray-100 min-h-screen">
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Sparkles, ExternalLink, Mail, Phone, Github, Linkedin, 
+  CheckCircle2, Laptop, Cpu, Globe, Rocket, ArrowRight, Award, 
+  GraduationCap, MessageSquare, Eye, X, Star, FileText, Check 
+} from 'lucide-react';
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-gray-800/60 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" class="text-xl font-bold heading-font tracking-wide text-white">Esha Jawaid<span class="text-blue-500">.</span></a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
-                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
-                <a href="#workflow" class="hover:text-blue-400 transition-colors">Workflow</a>
-                <a href="#faq" class="hover:text-blue-400 transition-colors">FAQ</a>
-                <a href="#contact" class="px-4 py-2 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-xl hover:bg-blue-600 hover:text-white transition-all">Contact</a>
+export default function EshaProPortfolio() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showCvModal, setShowCvModal] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const whatsappAutoMsg = encodeURIComponent("Hi Esha! I visited your portfolio and I'm impressed by your work. I would like to discuss a potential web project/collaboration with you. Let's connect!");
+  const whatsappUrl = `https://wa.me/923296094595?text=${whatsappAutoMsg}`;
+
+  const projects = [
+    {
+      id: 1,
+      title: 'VORTEX Digital',
+      category: 'agency',
+      subtitle: 'Next-Gen Digital Transformation Agency Portal',
+      description: 'Ultra-sleek, high-converting agency platform built for digital solutions. Features interactive service grids, dynamic booking workflows, and responsive fast-loading UI architecture.',
+      tags: ['HTML5/CSS3', 'JavaScript ES6+', 'UI/UX Design', 'Vercel Live'],
+      liveLink: 'https://vortex-digital-alpha.vercel.app/',
+      githubLink: 'https://github.com/eshajawaid537-jpg/vortex-digital',
+      gradient: 'from-blue-600 to-indigo-600'
+    },
+    {
+      id: 2,
+      title: 'ESHA LUXEE',
+      category: 'ecommerce',
+      subtitle: 'High-End Fashion & Luxury E-Commerce Storefront',
+      description: 'Premium fashion storefront engineered with high-converting e-commerce layouts, dynamic cart interaction, minimalist product showcases, and responsive fluid design.',
+      tags: ['E-Commerce UI', 'JavaScript DOM', 'Luxury Aesthetic', 'Responsive Grid'],
+      liveLink: 'https://esha-luxee.vercel.app/',
+      githubLink: 'https://github.com/eshajawaid537-jpg/esha-luxee',
+      gradient: 'from-purple-600 to-pink-600'
+    },
+    {
+      id: 3,
+      title: 'APEX Agency',
+      category: 'agency',
+      subtitle: 'Corporate Technology & Web Solutions Platform',
+      description: 'Comprehensive corporate portal for technology services. Built with structured service tiers, client project showcases, technical capability breakdowns, and clear CTA pipelines.',
+      tags: ['Corporate UI', 'Frontend Architecture', 'Web Development', 'Vercel Live'],
+      liveLink: 'https://apex-agency-project.vercel.app/',
+      githubLink: 'https://github.com/eshajawaid537-jpg/apex-agency-project',
+      gradient: 'from-cyan-600 to-blue-600'
+    }
+  ];
+
+  const filteredProjects = activeFilter === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
+
+  return (
+    <div className="min-h-screen bg-[#0b0f19] text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+      
+      {/* Background Animated Neon Glows */}
+      <div className="fixed top-0 left-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none animate-pulse" />
+      <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-[140px] pointer-events-none animate-pulse" />
+
+      {/* Navigation Bar */}
+      <nav className="sticky top-0 z-40 backdrop-blur-xl bg-[#0b0f19]/80 border-b border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-3"
+          >
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-indigo-500/25">
+              EJ
             </div>
-        </div>
-    </nav>
+            <div>
+              <span className="text-lg font-bold tracking-tight text-white block leading-none">ESHA JAWAID</span>
+              <span className="text-xs text-indigo-400 font-medium tracking-wide">CS SCHOLAR & DEVELOPER</span>
+            </div>
+          </motion.div>
 
-    <!-- HERO SECTION -->
-    <section id="about" class="pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <div data-aos="fade-up" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6">
-            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Full-Stack Web Developer
-        </div>
-        <h1 data-aos="fade-up" data-aos-delay="100" class="text-4xl md:text-6xl font-extrabold heading-font tracking-tight max-w-4xl leading-tight">
-            Building Modern, High-Performance Web Applications
-        </h1>
-        <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
-            I craft responsive full-stack websites with clean UI/UX, robust database architecture, and scalable frontend solutions tailored for business growth.
-        </p>
-        <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-wrap justify-center gap-4">
-            <a href="#projects" class="gradient-btn px-6 py-3.5 rounded-xl font-semibold text-sm shadow-lg hover:shadow-blue-500/20 transition-all flex items-center gap-2">
-                Explore Projects <i class="fa-solid fa-arrow-down text-xs"></i>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+            <a href="#about" className="hover:text-indigo-400 transition-colors">About</a>
+            <a href="#skills" className="hover:text-indigo-400 transition-colors">Capabilities</a>
+            <a href="#projects" className="hover:text-indigo-400 transition-colors">Featured Work</a>
+            <a href="#contact" className="hover:text-indigo-400 transition-colors">Contact</a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setShowCvModal(true)}
+              className="px-4 py-2 rounded-xl border border-slate-700 hover:border-indigo-500 text-xs font-semibold text-slate-200 transition-all flex items-center gap-1.5"
+            >
+              <FileText className="w-3.5 h-3.5 text-indigo-400" /> View CV
+            </button>
+            <a 
+              href={whatsappUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-semibold hover:opacity-90 transition-all shadow-lg shadow-indigo-500/20 flex items-center gap-1.5"
+            >
+              <MessageSquare className="w-4 h-4" /> Let's Talk
             </a>
-            <a href="#contact" class="glass-card px-6 py-3.5 rounded-xl font-semibold text-sm hover:border-gray-600 transition-all">
-                Get In Touch
-            </a>
+          </div>
         </div>
-    </section>
+      </nav>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="py-16 px-6 max-w-7xl mx-auto border-t border-gray-800/50">
-        <div data-aos="fade-up" class="mb-10 text-center">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Tech Stack</span>
-            <h2 class="text-2xl md:text-3xl font-bold heading-font mt-2">Technologies & Expertise</h2>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div data-aos="fade-up" data-aos-delay="100" class="glass-card p-4 rounded-xl text-center">
-                <i class="fa-brands fa-html5 text-3xl text-orange-500 mb-2"></i>
-                <h3 class="font-bold text-sm">HTML5 & CSS3</h3>
-                <p class="text-xs text-gray-400 mt-1">Responsive Web Design</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="200" class="glass-card p-4 rounded-xl text-center">
-                <i class="fa-brands fa-js text-3xl text-yellow-400 mb-2"></i>
-                <h3 class="font-bold text-sm">JavaScript (ES6+)</h3>
-                <p class="text-xs text-gray-400 mt-1">Dynamic Frontend Logic</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="300" class="glass-card p-4 rounded-xl text-center">
-                <i class="fa-brands fa-react text-3xl text-cyan-400 mb-2"></i>
-                <h3 class="font-bold text-sm">React & Tailwind</h3>
-                <p class="text-xs text-gray-400 mt-1">Modern UI Frameworks</p>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="400" class="glass-card p-4 rounded-xl text-center">
-                <i class="fa-brands fa-node-js text-3xl text-green-500 mb-2"></i>
-                <h3 class="font-bold text-sm">Node.js & C++</h3>
-                <p class="text-xs text-gray-400 mt-1">Backend & Logic Solutions</p>
-            </div>
-        </div>
-    </section>
+      {/* Hero Section */}
+      <section id="about" className="max-w-7xl mx-auto px-6 pt-20 pb-16 flex flex-col items-center text-center relative">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-semibold mb-8 backdrop-blur-md"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          AVAILABLE FOR FREELANCE & FULL-TIME ROLES
+        </motion.div>
 
-    <!-- PORTFOLIO SECTION -->
-    <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
-        <div data-aos="fade-up" class="mb-12">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Portfolio</span>
-            <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Featured Live Deployments</h2>
-        </div>
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-5xl leading-tight text-white"
+        >
+          Architecting High-Performance <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Digital Experiences</span> & Scalable Web Apps
+        </motion.h1>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- 01 VORTEX Digital -->
-            <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-blue-400 heading-font">01</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">Agency Portal</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">VORTEX Digital</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Digital Transformation Platform</p>
-                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
-                        Ultra-sleek agency portal engineered with interactive service matrices, glassmorphism aesthetics, and clean performance optimization.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://vortex-digital-alpha.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mt-6 text-slate-400 text-lg md:text-xl max-w-3xl font-normal leading-relaxed"
+        >
+          Full-Stack Web Developer & Computer Science Scholar (3.46 CGPA). Specializing in luxury e-commerce storefronts, modern corporate web platforms, and fast, responsive UI architecture.
+        </motion.p>
 
-            <!-- 02 Esha Luxe Storefront -->
-            <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-pink-400 heading-font">02</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/20">E-Commerce</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">Esha Luxe</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Luxury E-Commerce Storefront</p>
-                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
-                        Premium luxury shopping experience featuring responsive product showcases, high-converting layouts, and seamless collection browsing.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://esha-luxe-storefront.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
+        {/* Action Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-10 flex flex-wrap gap-4 justify-center"
+        >
+          <a href="#projects" className="px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold text-white transition-all shadow-xl shadow-indigo-600/30 flex items-center gap-2">
+            <Rocket className="w-5 h-5" /> Explore Work
+          </a>
+          <a href="https://github.com/eshajawaid537-jpg" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800 font-semibold text-slate-200 transition-all backdrop-blur-md flex items-center gap-2">
+            <Github className="w-5 h-5 text-indigo-400" /> GitHub Profile
+          </a>
+        </motion.div>
 
-            <!-- 03 QuickBite Food App -->
-            <div data-aos="fade-up" data-aos-delay="300" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-amber-400 heading-font">03</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">Food & Delivery</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">QuickBite Food App</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Food Ordering & Storefront Web App</p>
-                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
-                        Responsive food ordering application featuring interactive item selection, menu categories, dynamic cart management, and seamless UI/UX.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://food-delivery-app-3oon.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
+        {/* Stats Grid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl"
+        >
+          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md hover:border-indigo-500/50 transition-all">
+            <div className="text-3xl font-extrabold text-indigo-400">3.46</div>
+            <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Academic CGPA (BS CS)</div>
+          </div>
+          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md hover:border-purple-500/50 transition-all">
+            <div className="text-3xl font-extrabold text-purple-400">100%</div>
+            <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Responsive Quality</div>
+          </div>
+          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md hover:border-pink-500/50 transition-all">
+            <div className="text-3xl font-extrabold text-pink-400">10+</div>
+            <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Web Deployments</div>
+          </div>
+        </motion.div>
+      </section>
 
-            <!-- 04 APEX Agency -->
-            <div data-aos="fade-up" data-aos-delay="400" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-indigo-400 heading-font">04</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Corporate Tech</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">APEX Agency</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Corporate Web Solutions</p>
-                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
-                        Comprehensive corporate platform designed with structured service packages, fast loading times, and intuitive responsive navigation.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://apex-agency-project.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
+      {/* Featured Projects Section */}
+      <section id="projects" className="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/60">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">Portfolio</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">Featured Deployments</h2>
+          </div>
 
-            <!-- 05 MediFlow Healthcare -->
-            <div data-aos="fade-up" data-aos-delay="500" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-emerald-400 heading-font">05</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Healthcare Portal</span>
-                    </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">MediFlow</h3>
-                    <p class="text-xs text-gray-400 font-medium mb-3">Healthcare Management Web App</p>
-                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
-                        Modern healthcare platform designed for patient management, medical service tracking, and seamless appointments.
-                    </p>
-                </div>
-                <div>
-                    <a href="https://medi-flow-healthcare-wine.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
-                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WORKFLOW SECTION -->
-    <section id="workflow" class="py-20 px-6 max-w-7xl mx-auto">
-        <div data-aos="fade-up" class="mb-12">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Development Standards</span>
-            <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Full-Stack Development Workflow</h2>
+          <div className="flex gap-2 p-1.5 rounded-xl bg-slate-900/80 border border-slate-800 w-fit">
+            {['all', 'agency', 'ecommerce'].map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-4 py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
+                  activeFilter === filter 
+                    ? 'bg-indigo-600 text-white shadow-md' 
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div data-aos="fade-right" data-aos-delay="100" class="glass-card p-6 rounded-2xl">
-                <div class="text-2xl font-bold text-blue-400 heading-font mb-3">01</div>
-                <h3 class="text-lg font-bold mb-2">Architecture & Database Design</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Planning database schemas, API routes, and defining responsive frontend interfaces before writing production code.
-                </p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="200" class="glass-card p-6 rounded-2xl">
-                <div class="text-2xl font-bold text-purple-400 heading-font mb-3">02</div>
-                <h3 class="text-lg font-bold mb-2">Full-Stack Implementation</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Developing clean dynamic UIs with React/Tailwind while building secure Node.js backend endpoints and API flows.
-                </p>
-            </div>
-
-            <div data-aos="fade-left" data-aos-delay="300" class="glass-card p-6 rounded-2xl">
-                <div class="text-2xl font-bold text-emerald-400 heading-font mb-3">03</div>
-                <h3 class="text-lg font-bold mb-2">Testing & Cloud Deployment</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Testing API endpoints, executing cross-browser mobile checks, and deploying scalable web apps directly via Vercel.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION -->
-    <section id="faq" class="py-20 px-6 max-w-7xl mx-auto">
-        <div data-aos="fade-up" class="mb-12 text-center">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">FAQ</span>
-            <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Frequently Asked Questions</h2>
-            <p class="text-gray-400 text-sm mt-3 max-w-xl mx-auto">
-                Common questions about development workflow, project timelines, and technical integration.
-            </p>
-        </div>
-
-        <div class="max-w-3xl mx-auto space-y-4">
-            <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold heading-font mb-2 text-white">What services do you offer?</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    I specialize in full-stack web development, custom UI design, RESTful API integration, database architecture with MongoDB, and performance optimization for web applications.
-                </p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold heading-font mb-2 text-white">What is your typical project delivery timeline?</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Timeline depends on project scope. Landing pages and static websites take around 3–5 days, while full-stack web applications with backend APIs take 1–3 weeks.
-                </p>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300" class="glass-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold heading-font mb-2 text-white">How do we get started on a project?</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    You can reach out via the contact form, email, or LinkedIn. We will discuss your project requirements, target goals, tech stack, and set a clear timeline before development starts.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 px-6 max-w-7xl mx-auto border-t border-gray-800/50">
-        <div data-aos="fade-up" class="mb-12 text-center">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Get In Touch</span>
-            <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Let's Work Together</h2>
-            <p class="text-gray-400 text-sm mt-3 max-w-xl mx-auto">
-                Have a project in mind, need a custom full-stack web application, or want to discuss potential opportunities? Feel free to reach out!
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <div class="space-y-4">
-                <div data-aos="fade-right" data-aos-delay="100" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-regular fa-envelope"></i>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <AnimatePresence>
+            {filteredProjects.map((proj) => (
+              <motion.div 
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                key={proj.id} 
+                className="rounded-2xl bg-slate-900/60 border border-slate-800 overflow-hidden hover:border-indigo-500/50 transition-all flex flex-col justify-between group relative"
+              >
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${proj.gradient} flex items-center justify-center font-bold text-lg text-white shadow-lg`}>
+                      0{proj.id}
                     </div>
-                    <div class="min-w-0">
-                        <h4 class="font-bold text-lg heading-font">Email Me</h4>
-                        <a href="mailto:eshajawaid537@gmail.com" class="text-xs text-gray-400 hover:text-blue-400 transition-colors break-all">
-                            eshajawaid537@gmail.com
-                        </a>
-                    </div>
-                </div>
-
-                <div data-aos="fade-right" data-aos-delay="200" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </div>
-                    <div class="min-w-0">
-                        <h4 class="font-bold text-lg heading-font">LinkedIn Profile</h4>
-                        <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" class="text-xs text-gray-400 hover:text-purple-400 transition-colors break-all">
-                            linkedin.com/in/esha-jawaid-b79559377
-                        </a>
-                    </div>
-                </div>
-
-                <div data-aos="fade-right" data-aos-delay="300" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0">
-                        <i class="fa-brands fa-github"></i>
-                    </div>
-                    <div class="min-w-0">
-                        <h4 class="font-bold text-lg heading-font">GitHub Repositories</h4>
-                        <a href="https://github.com/eshajawaid537-jpg" target="_blank" class="text-xs text-gray-400 hover:text-emerald-400 transition-colors break-all">
-                            github.com/eshajawaid537-jpg
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div data-aos="fade-left" data-aos-delay="200" class="glass-card p-8 rounded-2xl">
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Name</label>
-                        <input type="text" name="name" required placeholder="Your Name" class="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-sm text-white focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Email</label>
-                        <input type="email" name="email" required placeholder="your.email@example.com" class="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-sm text-white focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-400 uppercase mb-2">Message</label>
-                        <textarea name="message" rows="4" required placeholder="How can I help you?" class="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-xl text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
-                    </div>
-                    <button type="submit" class="whatsapp-gradient w-full py-3.5 rounded-xl text-sm font-semibold text-white shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all">
-                        <i class="fa-regular fa-paper-plane"></i> Send Message
+                    <button 
+                      onClick={() => setSelectedProject(proj)}
+                      className="p-2 rounded-lg bg-slate-800/80 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all"
+                      title="Quick Preview"
+                    >
+                      <Eye className="w-4 h-4" />
                     </button>
-                </form>
-            </div>
-        </div>
-    </section>
+                  </div>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-gray-800/80 py-8 px-6 text-center text-xs text-gray-400">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>© 2026 Esha Jawaid. All rights reserved.</p>
-            <div class="flex items-center gap-4 text-sm">
-                <a href="https://github.com/eshajawaid537-jpg" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:eshajawaid537@gmail.com" class="hover:text-emerald-400 transition-colors"><i class="fa-regular fa-envelope"></i></a>
-            </div>
-        </div>
-    </footer>
+                  <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">{proj.title}</h3>
+                  <p className="text-xs text-indigo-400 font-semibold mt-1 mb-3">{proj.subtitle}</p>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{proj.description}</p>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: 'ease-out-cubic'
-        });
-    </script>
-</body>
-</html>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {proj.tags.map((tag, idx) => (
+                      <span key={idx} className="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0 mt-auto flex gap-3">
+                  <a 
+                    href={proj.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex-1 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition-all flex items-center justify-center gap-1.5"
+                  >
+                    Live Site <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <a 
+                    href={proj.githubLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs transition-all flex items-center justify-center gap-1.5"
+                  >
+                    Code <Github className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* Project Preview Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+          >
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-8 relative shadow-2xl"
+            >
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-6 right-6 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <h3 className="text-2xl font-bold text-white mb-2">{selectedProject.title}</h3>
+              <p className="text-indigo-400 text-sm font-semibold mb-4">{selectedProject.subtitle}</p>
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">{selectedProject.description}</p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {selectedProject.tags.map((tag, idx) => (
+                  <span key={idx} className="px-3 py-1 rounded-md bg-slate-800 text-slate-200 text-xs font-medium">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex gap-4">
+                <a 
+                  href={selectedProject.liveLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex-1 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all text-center flex items-center justify-center gap-2"
+                >
+                  Visit Live Site <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CV Modal */}
+      <AnimatePresence>
+        {showCvModal && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+          >
+            <motion.div 
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-8 relative shadow-2xl"
+            >
+              <button 
+                onClick={() => setShowCvModal(false)}
+                className="absolute top-6 right-6 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center gap-3 mb-6">
+                <FileText className="w-8 h-8 text-indigo-400" />
+                <div>
+                  <h3 className="text-xl font-bold text-white">Esha Jawaid — CV</h3>
+                  <p className="text-xs text-indigo-400 font-medium">BS Computer Science Scholar</p>
+                </div>
+              </div>
+
+              <div className="space-y-3 text-sm text-slate-300 mb-8 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                <div className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> 3.46 CGPA in BS CS</div>
+                <div className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Full-Stack Frontend Engineering</div>
+                <div className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> DigiSkills Certified (SEO, Marketing)</div>
+                <div className="flex items-center gap-2"><Check className="w-4 h-4 text-emerald-400" /> Live E-Commerce & Agency Deployments</div>
+              </div>
+
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all text-center block"
+              >
+                Request Full PDF Resume via WhatsApp
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Contact Section */}
+      <section id="contact" className="max-w-7xl mx-auto px-6 py-20 border-t border-slate-800/60">
+        <div className="rounded-3xl bg-gradient-to-tr from-indigo-950 via-slate-900 to-slate-950 border border-indigo-800/40 p-8 md:p-14 text-center relative overflow-hidden">
+          <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest">Get In Touch</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2 mb-4">Let's Build Something Iconic</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg mb-10">
+            Available for freelance developments, custom web applications, frontend UI architecture, and technical collaborations.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
+            <a href="mailto:eshajawaid537@gmail.com" className="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-slate-200 hover:text-white transition-all">
+              <Mail className="w-5 h-5 text-indigo-400" /> eshajawaid537@gmail.com
+            </a>
+            <a href="https://github.com/eshajawaid537-jpg" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-slate-200 hover:text-white transition-all">
+              <Github className="w-5 h-5 text-indigo-400" /> GitHub Profile
+            </a>
+            <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500 text-slate-200 hover:text-white transition-all">
+              <Linkedin className="w-5 h-5 text-indigo-400" /> LinkedIn Profile
+            </a>
+          </div>
+
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow-xl shadow-emerald-600/25 transition-all text-base">
+            Start Project via WhatsApp <ArrowRight className="w-5 h-5" />
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+        © 2026 Esha Jawaid. Engineered with Precision & Excellence.
+      </footer>
+
+    </div>
+  );
+}
