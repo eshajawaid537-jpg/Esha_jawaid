@@ -1,241 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Esha Jawaid | Full-Stack Web Developer & UI Specialist</title>
-    <meta name="title" content="Esha Jawaid | Full-Stack Web Developer & UI Specialist">
-    <meta name="description" content="Portfolio of Esha Jawaid - Full-stack web developer building scalable backend APIs, high-converting storefronts, and robust web applications.">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://esha-jawaid.vercel.app/">
-    <meta property="og:title" content="Esha Jawaid | Full-Stack Web Developer & UI Specialist">
-    <meta property="og:description" content="Full-Stack Web Developer & Computer Science Scholar (3.46 CGPA). Crafting complete web solutions from frontend UIs to backend APIs.">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Esha Jawaid | Full-Stack Web Developer & UI Specialist">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <title>Esha Jawaid - Full-Stack Web Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #030712;
-            color: #f3f4f6;
-            overflow-x: hidden;
-        }
-        .heading-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .glass-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card:hover {
-            border-color: rgba(99, 102, 241, 0.5);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 35px -10px rgba(99, 102, 241, 0.35);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-btn {
-            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-            transition: all 0.3s ease;
-        }
-        .gradient-btn:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-        }
-        .whatsapp-gradient {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-        .whatsapp-gradient:hover {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .gradient-btn { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
+        .gradient-btn:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); }
+        .whatsapp-gradient { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body class="bg-[#0b0f19] text-gray-100 min-h-screen">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-gray-800/50">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">
-                    EJ
-                </div>
-                <div>
-                    <span class="block font-bold text-lg tracking-tight heading-font">ESHA JAWAID</span>
-                    <span class="block text-xs text-blue-400 font-medium">Full-Stack Web Developer</span>
-                </div>
-            </a>
-
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-gray-800/60 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="text-xl font-bold heading-font tracking-wide text-white">Esha Jawaid<span class="text-blue-500">.</span></a>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
                 <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="#skills" class="hover:text-blue-400 transition-colors">Capabilities</a>
-                <a href="#projects" class="hover:text-blue-400 transition-colors">Portfolio</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
                 <a href="#workflow" class="hover:text-blue-400 transition-colors">Workflow</a>
                 <a href="#faq" class="hover:text-blue-400 transition-colors">FAQ</a>
-                <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="https://github.com/eshajawaid537-jpg" target="_blank" class="text-gray-300 hover:text-white text-xl transition-colors">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/esha-jawaid-b79559377" target="_blank" class="text-gray-300 hover:text-blue-400 text-xl transition-colors">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="mailto:eshajawaid537@gmail.com" class="whatsapp-gradient px-5 py-2.5 rounded-xl font-medium text-sm text-white transition-all shadow-lg flex items-center gap-2">
-                    <i class="fa-regular fa-envelope text-lg"></i> Let's Talk
-                </a>
+                <a href="#contact" class="px-4 py-2 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-xl hover:bg-blue-600 hover:text-white transition-all">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="pt-36 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
-        <div data-aos="fade-down" data-aos-duration="1000" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs font-semibold text-emerald-400 mb-8 w-fit border border-emerald-500/30">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            AVAILABLE FOR FREELANCE & CLIENT PROJECTS
+    <section id="about" class="pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div data-aos="fade-up" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> Full-Stack Web Developer
         </div>
-
-        <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight heading-font leading-tight mb-6">
-            Building Scalable <span class="gradient-text">Full-Stack Web Applications</span> & Digital Systems
+        <h1 data-aos="fade-up" data-aos-delay="100" class="text-4xl md:text-6xl font-extrabold heading-font tracking-tight max-w-4xl leading-tight">
+            Building Modern, High-Performance Web Applications
         </h1>
-
-        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="text-gray-400 text-lg md:text-xl max-w-3xl mb-10 font-normal leading-relaxed">
-            Full-Stack Web Developer & Computer Science Scholar (3.46 CGPA). Crafting robust backend architectures, dynamic frontend interfaces, and RESTful APIs with precision engineering.
+        <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-gray-400 text-base md:text-lg max-w-2xl leading-relaxed">
+            I craft responsive full-stack websites with clean UI/UX, robust database architecture, and scalable frontend solutions tailored for business growth.
         </p>
-
-        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" class="flex flex-wrap gap-4 mb-16">
-            <a href="#projects" class="gradient-btn px-8 py-4 rounded-xl font-semibold text-white shadow-xl flex items-center gap-3 transition-transform hover:-translate-y-0.5">
-                <i class="fa-solid fa-rocket"></i> View Live Deployments
+        <div data-aos="fade-up" data-aos-delay="300" class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="#projects" class="gradient-btn px-6 py-3.5 rounded-xl font-semibold text-sm shadow-lg hover:shadow-blue-500/20 transition-all flex items-center gap-2">
+                Explore Projects <i class="fa-solid fa-arrow-down text-xs"></i>
             </a>
-            <a href="https://ap.wps.com/cms/docs/d/cbCairhqE0f86bp4?lg=en-US&sa=601.1074&ps=1&fn=Esha_Jawaid_Resume.pdf" target="_blank" class="glass-card px-8 py-4 rounded-xl font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-3 transition-all hover:bg-blue-950/30 border-blue-500/30">
-                <i class="fa-solid fa-file-arrow-down text-lg"></i> Download CV
+            <a href="#contact" class="glass-card px-6 py-3.5 rounded-xl font-semibold text-sm hover:border-gray-600 transition-all">
+                Get In Touch
             </a>
-            <a href="mailto:eshajawaid537@gmail.com" class="glass-card px-8 py-4 rounded-xl font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-3 transition-all hover:bg-emerald-950/30 border-emerald-500/30">
-                <i class="fa-regular fa-envelope text-lg"></i> Get In Touch
-            </a>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-gray-800/80">
-            <div data-aos="zoom-in" data-aos-delay="100" class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-blue-400 heading-font mb-1">3.46</div>
-                <div class="text-xs text-gray-400 font-medium uppercase tracking-wider">Academic CGPA (BS CS)</div>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="200" class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-purple-400 heading-font mb-1">Full-Stack</div>
-                <div class="text-xs text-gray-400 font-medium uppercase tracking-wider">Frontend + Backend Integration</div>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="300" class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-indigo-400 heading-font mb-1">Live</div>
-                <div class="text-xs text-gray-400 font-medium uppercase tracking-wider">Production Web Apps</div>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="400" class="glass-card p-6 rounded-2xl">
-                <div class="text-3xl font-bold text-emerald-400 heading-font mb-1">Certified</div>
-                <div class="text-xs text-gray-400 font-medium uppercase tracking-wider">SEO & Freelancing</div>
-            </div>
         </div>
     </section>
 
-    <!-- CAPABILITIES SECTION -->
-    <section id="skills" class="py-20 px-6 max-w-7xl mx-auto">
-        <div data-aos="fade-up" class="mb-12">
-            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Capabilities</span>
-            <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Technical Core & Full-Stack Stack</h2>
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-16 px-6 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div data-aos="fade-up" class="mb-10 text-center">
+            <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Tech Stack</span>
+            <h2 class="text-2xl md:text-3xl font-bold heading-font mt-2">Technologies & Expertise</h2>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div data-aos="fade-up" data-aos-delay="100" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-brands fa-react"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">React & Frontend Systems</h4>
-                    <p class="text-xs text-gray-400">Interactive UIs & Dynamic Components</p>
-                </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div data-aos="fade-up" data-aos-delay="100" class="glass-card p-4 rounded-xl text-center">
+                <i class="fa-brands fa-html5 text-3xl text-orange-500 mb-2"></i>
+                <h3 class="font-bold text-sm">HTML5 & CSS3</h3>
+                <p class="text-xs text-gray-400 mt-1">Responsive Web Design</p>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="200" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-brands fa-node-js"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">Node.js & Express</h4>
-                    <p class="text-xs text-gray-400">Backend Server Architecture</p>
-                </div>
+            <div data-aos="fade-up" data-aos-delay="200" class="glass-card p-4 rounded-xl text-center">
+                <i class="fa-brands fa-js text-3xl text-yellow-400 mb-2"></i>
+                <h3 class="font-bold text-sm">JavaScript (ES6+)</h3>
+                <p class="text-xs text-gray-400 mt-1">Dynamic Frontend Logic</p>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="300" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-database"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">MongoDB & NoSQL Databases</h4>
-                    <p class="text-xs text-gray-400">Data Modeling & Storage</p>
-                </div>
+            <div data-aos="fade-up" data-aos-delay="300" class="glass-card p-4 rounded-xl text-center">
+                <i class="fa-brands fa-react text-3xl text-cyan-400 mb-2"></i>
+                <h3 class="font-bold text-sm">React & Tailwind</h3>
+                <p class="text-xs text-gray-400 mt-1">Modern UI Frameworks</p>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="400" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-network-wired"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">RESTful API Design</h4>
-                    <p class="text-xs text-gray-400">Seamless Backend Integration</p>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="500" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-brands fa-js"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">JavaScript ES6+ & Tailwind</h4>
-                    <p class="text-xs text-gray-400">Async Data Flow & Responsive Layouts</p>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="600" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">C++ Programming Engine</h4>
-                    <p class="text-xs text-gray-400">OOP & Core Algorithmic Logic</p>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="700" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">Vercel & Git Workflow</h4>
-                    <p class="text-xs text-gray-400">Cloud Deployment & Version Control</p>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="800" class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg heading-font">SEO & Web Performance</h4>
-                    <p class="text-xs text-gray-400">DigiSkills Certified Practitioner</p>
-                </div>
+            <div data-aos="fade-up" data-aos-delay="400" class="glass-card p-4 rounded-xl text-center">
+                <i class="fa-brands fa-node-js text-3xl text-green-500 mb-2"></i>
+                <h3 class="font-bold text-sm">Node.js & C++</h3>
+                <p class="text-xs text-gray-400 mt-1">Backend & Logic Solutions</p>
             </div>
         </div>
     </section>
@@ -247,7 +92,8 @@
             <h2 class="text-3xl md:text-4xl font-bold heading-font mt-2">Featured Live Deployments</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 01 VORTEX Digital -->
             <div data-aos="fade-up" data-aos-delay="100" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
@@ -267,11 +113,32 @@
                 </div>
             </div>
 
+            <!-- 02 Esha Luxe Storefront -->
             <div data-aos="fade-up" data-aos-delay="200" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-amber-400 heading-font">02</span>
-                        <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">E-Commerce & Food</span>
+                        <span class="text-xs font-bold text-pink-400 heading-font">02</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/20">E-Commerce</span>
+                    </div>
+                    <h3 class="text-xl font-bold heading-font mb-2">Esha Luxe</h3>
+                    <p class="text-xs text-gray-400 font-medium mb-3">Luxury E-Commerce Storefront</p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                        Premium luxury shopping experience featuring responsive product showcases, high-converting layouts, and seamless collection browsing.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://esha-luxe-storefront.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
+                        Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 03 QuickBite Food App -->
+            <div data-aos="fade-up" data-aos-delay="300" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-amber-400 heading-font">03</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">Food & Delivery</span>
                     </div>
                     <h3 class="text-xl font-bold heading-font mb-2">QuickBite Food App</h3>
                     <p class="text-xs text-gray-400 font-medium mb-3">Food Ordering & Storefront Web App</p>
@@ -286,10 +153,11 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="300" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- 04 APEX Agency -->
+            <div data-aos="fade-up" data-aos-delay="400" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-indigo-400 heading-font">03</span>
+                        <span class="text-xs font-bold text-indigo-400 heading-font">04</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Corporate Tech</span>
                     </div>
                     <h3 class="text-xl font-bold heading-font mb-2">APEX Agency</h3>
@@ -305,10 +173,11 @@
                 </div>
             </div>
 
-            <div data-aos="fade-up" data-aos-delay="400" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- 05 MediFlow Healthcare -->
+            <div data-aos="fade-up" data-aos-delay="500" class="glass-card rounded-2xl p-6 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-emerald-400 heading-font">04</span>
+                        <span class="text-xs font-bold text-emerald-400 heading-font">05</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Healthcare Portal</span>
                     </div>
                     <h3 class="text-xl font-bold heading-font mb-2">MediFlow</h3>
