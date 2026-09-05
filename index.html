@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #030712;
             color: #f3f4f6;
+            overflow-x: hidden;
         }
         .heading-font {
             font-family: 'Space Grotesk', sans-serif;
@@ -23,10 +24,12 @@
             background: rgba(17, 24, 39, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-card:hover {
             border-color: rgba(59, 130, 246, 0.4);
             box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.2);
+            transform: translateY(-4px);
         }
         .gradient-text {
             background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
@@ -35,18 +38,60 @@
         }
         .gradient-btn {
             background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            transition: all 0.3s ease;
         }
         .gradient-btn:hover {
             background: linear-gradient(135deg, #1d4ed8 0%, #6d28d9 100%);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+            transform: translateY(-2px);
         }
+
+        /* CUSTOM ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.08); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .animate-glow {
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body class="antialiased selection:bg-blue-500 selection:text-white relative">
 
+    <!-- BACKGROUND GLOW EFFECTS -->
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none animate-glow"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none animate-glow delay-2"></div>
+
+    <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-gray-800/50">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform">
                     EJ
                 </div>
                 <div>
@@ -65,37 +110,41 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <a href="mailto:eshajawaid537@gmail.com" class="gradient-btn px-5 py-2.5 rounded-xl font-medium text-sm text-white transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+                <a href="mailto:eshajawaid537@gmail.com" class="gradient-btn px-5 py-2.5 rounded-xl font-medium text-sm text-white shadow-lg shadow-blue-500/20 flex items-center gap-2">
                     <i class="fa-regular fa-envelope"></i> Send Email
                 </a>
             </div>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="pt-36 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs font-semibold text-blue-400 mb-8 w-fit border border-blue-500/30">
-            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-            OPEN FOR FREELANCE & CLIENT PROJECTS
+        <div class="animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs font-semibold text-blue-400 mb-8 w-fit border border-blue-500/30">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                OPEN FOR FREELANCE & CLIENT PROJECTS
+            </div>
         </div>
 
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight heading-font leading-tight mb-6">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight heading-font leading-tight mb-6 animate-fade-in-up delay-1">
             Building High-Impact <span class="gradient-text">Modern Web Applications</span> & UI Solutions
         </h1>
 
-        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mb-10 font-normal leading-relaxed">
+        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mb-10 font-normal leading-relaxed animate-fade-in-up delay-2">
             Full-Stack Web Developer & Computer Science Scholar (3.46 CGPA). Crafting high-converting storefronts, corporate web portals, and scalable digital interfaces with precision engineering.
         </p>
 
-        <div class="flex flex-wrap gap-4 mb-16">
-            <a href="#projects" class="gradient-btn px-8 py-4 rounded-xl font-semibold text-white shadow-xl shadow-blue-500/20 flex items-center gap-3 transition-transform hover:-translate-y-0.5">
-                <i class="fa-solid fa-rocket"></i> View Live Deployments
+        <div class="flex flex-wrap gap-4 mb-16 animate-fade-in-up delay-3">
+            <a href="#projects" class="gradient-btn px-8 py-4 rounded-xl font-semibold text-white shadow-xl shadow-blue-500/20 flex items-center gap-3">
+                <i class="fa-solid fa-rocket animate-float"></i> View Live Deployments
             </a>
-            <a href="mailto:eshajawaid537@gmail.com" class="glass-card px-8 py-4 rounded-xl font-semibold text-gray-200 hover:text-white flex items-center gap-3 transition-all hover:bg-gray-800">
+            <a href="mailto:eshajawaid537@gmail.com" class="glass-card px-8 py-4 rounded-xl font-semibold text-gray-200 hover:text-white flex items-center gap-3">
                 <i class="fa-regular fa-paper-plane"></i> Contact via Email
             </a>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-gray-800/80">
+        <!-- STATS GRID -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-gray-800/80 animate-fade-in-up delay-3">
             <div class="glass-card p-6 rounded-2xl">
                 <div class="text-3xl font-bold text-blue-400 heading-font mb-1">3.46</div>
                 <div class="text-xs text-gray-400 font-medium">Academic CGPA (BS CS)</div>
@@ -115,6 +164,7 @@
         </div>
     </section>
 
+    <!-- CAPABILITIES / SKILLS -->
     <section id="skills" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="mb-12">
             <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Tech Architecture</span>
@@ -122,8 +172,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-4 group">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                     <i class="fa-brands fa-html5"></i>
                 </div>
                 <div>
@@ -132,8 +182,8 @@
                 </div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-4 group">
+                <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                     <i class="fa-brands fa-js"></i>
                 </div>
                 <div>
@@ -142,8 +192,8 @@
                 </div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-4 group">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                     <i class="fa-brands fa-react"></i>
                 </div>
                 <div>
@@ -152,8 +202,8 @@
                 </div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-4 group">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-code"></i>
                 </div>
                 <div>
@@ -162,8 +212,8 @@
                 </div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-4 group">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-cloud-arrow-up"></i>
                 </div>
                 <div>
@@ -172,8 +222,8 @@
                 </div>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+            <div class="glass-card p-6 rounded-2xl flex items-center gap-4 group">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div>
@@ -184,6 +234,7 @@
         </div>
     </section>
 
+    <!-- PORTFOLIO / PROJECTS -->
     <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="mb-12">
             <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Portfolio</span>
@@ -191,96 +242,101 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- PROJECT 1 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-bold text-emerald-400 heading-font">01</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Healthcare Platform</span>
                     </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">MediFlow Healthcare</h3>
+                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">MediFlow Healthcare</h3>
                     <p class="text-xs text-gray-400 font-medium mb-3">Healthcare Management Portal</p>
                     <p class="text-sm text-gray-300 leading-relaxed mb-6">
                         Engineered a patient service flow platform with appointment layouts and 95+ performance mobile responsiveness.
                     </p>
                 </div>
                 <div>
-                    <a href="https://esha-jawaid-ne6d.vercel.app" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
+                    <a href="https://esha-jawaid-ne6d.vercel.app" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
                         Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- PROJECT 2 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-bold text-amber-400 heading-font">02</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">Food Delivery</span>
                     </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">Food Delivery App</h3>
+                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">Food Delivery App</h3>
                     <p class="text-xs text-gray-400 font-medium mb-3">Online Food Ordering Application</p>
                     <p class="text-sm text-gray-300 leading-relaxed mb-6">
                         Interactive food ordering platform featuring dynamic menu browsing, mobile-first responsive layout, and fast user navigation.
                     </p>
                 </div>
                 <div>
-                    <a href="https://food-delivery-app-3oon.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
+                    <a href="https://food-delivery-app-3oon.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
                         Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- PROJECT 3 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-bold text-blue-400 heading-font">03</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">Agency Portal</span>
                     </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">VORTEX Digital</h3>
+                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">VORTEX Digital</h3>
                     <p class="text-xs text-gray-400 font-medium mb-3">Digital Transformation Platform</p>
                     <p class="text-sm text-gray-300 leading-relaxed mb-6">
                         Ultra-sleek agency portal engineered with interactive service matrices, glassmorphism aesthetics, and performance optimization.
                     </p>
                 </div>
                 <div>
-                    <a href="https://vortex-digital-alpha.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
+                    <a href="https://vortex-digital-alpha.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
                         Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- PROJECT 4 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-bold text-purple-400 heading-font">04</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">E-Commerce</span>
                     </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">ESHA LUXEE</h3>
+                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">ESHA LUXEE</h3>
                     <p class="text-xs text-gray-400 font-medium mb-3">Luxury E-Commerce Storefront</p>
                     <p class="text-sm text-gray-300 leading-relaxed mb-6">
                         High-converting luxury fashion storefront with responsive product showcases, fluid UI micro-interactions, and cart workflow layout.
                     </p>
                 </div>
                 <div>
-                    <a href="https://esha-luxee.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
+                    <a href="https://esha-luxee.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
                         Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
                     </a>
                 </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+            <!-- PROJECT 5 -->
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between group">
                 <div>
                     <div class="flex items-center justify-between mb-4">
                         <span class="text-xs font-bold text-indigo-400 heading-font">05</span>
                         <span class="text-xs px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Corporate Tech</span>
                     </div>
-                    <h3 class="text-xl font-bold heading-font mb-2">APEX Agency</h3>
+                    <h3 class="text-xl font-bold heading-font mb-2 group-hover:text-blue-400 transition-colors">APEX Agency</h3>
                     <p class="text-xs text-gray-400 font-medium mb-3">Corporate Web Solutions</p>
                     <p class="text-sm text-gray-300 leading-relaxed mb-6">
                         Comprehensive corporate platform designed with structured service packages, fast loading times, and intuitive responsive navigation.
                     </p>
                 </div>
                 <div>
-                    <a href="https://apex-agency-project.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block transition-all">
+                    <a href="https://apex-agency-project.vercel.app/" target="_blank" class="gradient-btn w-full py-3 rounded-xl text-center text-sm font-semibold text-white block">
                         Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
                     </a>
                 </div>
@@ -288,6 +344,7 @@
         </div>
     </section>
 
+    <!-- WORKFLOW -->
     <section id="workflow" class="py-20 px-6 max-w-7xl mx-auto">
         <div class="mb-12">
             <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Development Standards</span>
@@ -298,8 +355,7 @@
             <div class="glass-card p-6 rounded-2xl">
                 <div class="text-2xl font-bold text-blue-400 heading-font mb-3">01</div>
                 <h3 class="text-lg font-bold mb-2">Discovery & Planning</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">
-                    Analyzing requirements, defining user flows, and planning high-performing architecture before writing code.
+                <p class="text-sm text-gray-400 leading-relaxed">Analyzing requirements, defining user flows, and planning high-performing architecture before writing code.
                 </p>
             </div>
 
@@ -321,6 +377,7 @@
         </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq" class="py-20 px-6 max-w-4xl mx-auto">
         <div class="mb-12 text-center">
             <span class="text-xs font-bold text-blue-400 tracking-widest uppercase">Questions & Answers</span>
@@ -343,7 +400,7 @@
                     How long does it take to complete a project?
                     <span class="text-blue-400 group-open:rotate-180 transition-transform"><i class="fa-solid fa-chevron-down"></i></span>
                 </summary>
-                <p class="mt-4 text-gray-400 leading-relaxed">
+                <p class="mt-4 text-sm text-gray-400 leading-relaxed">
                     Turnaround time depends on the project scope. A standard high-converting landing page takes 3-5 days, while complex web applications take 1-2 weeks.
                 </p>
             </details>
@@ -392,14 +449,15 @@
 
     <!-- CONTACT / CTA -->
     <section id="contact" class="py-20 px-6 max-w-4xl mx-auto text-center">
-        <div class="glass-card p-10 md:p-16 rounded-3xl border border-blue-500/20">
+        <div class="glass-card p-10 md:p-16 rounded-3xl border border-blue-500/20 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
             <h2 class="text-3xl md:text-5xl font-extrabold heading-font mb-4">Have a Web Project in Mind?</h2>
             <p class="text-gray-400 max-w-xl mx-auto text-base mb-8">
                 Let's connect via email to discuss how I can bring your custom web application or landing page to life with high quality and fast delivery.
             </p>
 
             <div class="flex justify-center">
-                <a href="mailto:eshajawaid537@gmail.com" class="gradient-btn px-8 py-4 rounded-xl font-bold text-white shadow-xl shadow-blue-500/25 flex items-center gap-3 transition-transform hover:scale-105">
+                <a href="mailto:eshajawaid537@gmail.com" class="gradient-btn px-8 py-4 rounded-xl font-bold text-white shadow-xl shadow-blue-500/25 flex items-center gap-3">
                     <i class="fa-regular fa-paper-plane"></i> Contact via Email
                 </a>
             </div>
